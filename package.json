@@ -1,7 +1,7 @@
 {
-  "name": "artilerry-sample",
+  "name": "artillery-sample",
   "version": "0.0.1",
-  "description": "Performance Tests with artilerry",
+  "description": "Performance Tests with artillery",
   "main": "index.js",
   "dependencies": {
     "artillery": "^1.6.0",
