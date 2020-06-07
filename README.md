@@ -74,3 +74,50 @@ To run these tests you'll need a X-RapidAPI-Key, it's just to go to [Google API 
 ```bash
 export RAPID_API_KEY=<google-api-key>
 ```
+
+## Virtual Users management
+
+Create 50 virtual users every second for 5 minutes:
+
+```yaml
+phases:
+    - duration: 300
+      arrivalRate: 50
+```
+
+Constant arrival rate with no more than 50 concurrent VUs:
+
+```yaml
+phases:
+    - duration: 300
+      arrivalRate: 10
+      maxVusers: 50
+```
+
+Ramp up arrival rate from 10 to 50 over 2 minutes, followed by 10 minutes at 50 arrivals per second:
+
+```yaml
+phases:
+    - duration: 120
+      arrivalRate: 10
+      rampTo: 50
+      name: "Warm up the application"
+    - duration: 600
+      arrivalRate: 50
+      name: "Sustained max load"
+```
+
+Create 20 virtual users in 60 seconds (approximately one every 3 seconds):
+
+```yaml
+phases:
+    - duration: 60
+      arrivalCount: 20
+```
+
+A pause:
+
+```yaml
+phases:
+    - pause: 60
+```
