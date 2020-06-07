@@ -1,0 +1,20 @@
+  scenarios:
+    - name: "Perform a search at Google"
+      flow:
+      - function: "generatingRandomSearchQuery"
+      - post:
+          headers:
+            X-RapidAPI-Host: "google-search3.p.rapidapi.com"
+            X-RapidAPI-Key: "{{ $processEnvironment.RAPID_API_KEY }}"
+          url: "/search"
+          json:
+            country: "US"
+            get_total: false
+            hl: "us"
+            language: "lang_en"
+            max_results: 100
+            q: "{{ random }}"
+            uule: ""
+          expect:
+            - statusCode: 200
+            - contentType: json

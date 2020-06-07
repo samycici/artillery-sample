@@ -1,0 +1,27 @@
+config:
+    target: ""
+    processor: "utils/helpers.js"
+    plugins:
+        publish-metrics:
+            - type: datadog
+              apiKey: "{{ $processEnvironment.DD_API_KEY }}"
+              prefix: artillery.
+              tags:
+                - team:test
+                - team:sre
+                - component:google
+              event:
+                tags:
+                    - team:qas
+    environments:
+        staging:
+            target: "https://google-search3.p.rapidapi.com/api/v1"
+            phases:
+                - duration: 60
+                  arrivalCount: 10
+                  name: "Get Set....Ready?"
+            http:
+                timeout: 10
+            defaults:
+                headers:
+                    Content-Type: "application/json"
