@@ -64,7 +64,7 @@ artillery report <name of the json created on the run>.json
 A package.json was generated for this folder, targeting only the dependencies used for the test. For now there is only one example script configured. But basically the execution would be:
 
 ```bash
-npm run <script_name>
+npm run test
 ```
 
 ## Google RapidAPI-Key
