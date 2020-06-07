@@ -121,3 +121,5 @@ A pause:
 phases:
     - pause: 60
 ```
+
+For more info you can access [Artillery Docs](https://artillery.io/docs/script-reference/#script-reference).
